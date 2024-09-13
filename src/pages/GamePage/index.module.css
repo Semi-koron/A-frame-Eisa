@@ -31,3 +31,16 @@
   color: #000000;
   background-color: #eeeeee;
 }
+
+.info {
+  padding: 6px 30px;
+  border-radius: 5px;
+  border: solid;
+  position: fixed;
+  top: 20px;
+  left: 100px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #eeeeee;
+}

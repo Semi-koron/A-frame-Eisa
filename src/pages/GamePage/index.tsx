@@ -153,6 +153,7 @@ function GamePage() {
           })()}
         </div>
         <div className={style["counter"]}>count : {count.current}</div>
+        <div className={style["info"]}> 操作説明 移動AWSD</div>
       </div>
       <a-scene physics="gravity: -3;" vr-mode-ui="enabled: false">
         <a-plane
