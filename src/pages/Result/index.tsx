@@ -1,11 +1,18 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import style from "./index.module.css";
+import { useEffect } from "react";
 
 function ResultPage() {
   const navigate = useNavigate();
   //クエリパラメータから取得する
   const param = new URLSearchParams(useLocation().search);
   const count = (param.get("count") ?? 0) as number;
+  const dodon = document.getElementById("dodon") as HTMLAudioElement;
+
+  useEffect(() => {
+    dodon.currentTime = 0;
+    dodon.play();
+  }, [dodon]);
   return (
     <>
       <div className={style["result-wrapper"]}>
@@ -40,6 +47,9 @@ function ResultPage() {
           タイトルへ戻る
         </button>
       </div>
+      <audio id="dodon">
+        <source src="/src/assets/dodon.mp3" type="audio/mpeg" />
+      </audio>
     </>
   );
 }

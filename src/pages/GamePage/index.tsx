@@ -33,6 +33,8 @@ function GamePage() {
   const floorElement = document.getElementById("floor");
   const donutElement = document.getElementById("target");
   const playerElement = document.getElementById("player");
+  const don = document.getElementById("don") as HTMLAudioElement;
+  const dodon = document.getElementById("dodon") as HTMLAudioElement;
   //キーが押されている間の処理をイベントリスナーで設定
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -74,6 +76,7 @@ function GamePage() {
       donutElement?.removeAttribute("dynamic-body");
       donutElement?.setAttribute("dynamic-body", "shape: sphere; mass: 1");
       if (life.current === 0) {
+        dodon.play();
         navigate(`/Result?count=${count.current}`);
       }
     };
@@ -88,6 +91,9 @@ function GamePage() {
       //dynamic-body="shape: sphere; mass: 1"を削除する
       donutElement?.removeAttribute("dynamic-body");
       donutElement?.setAttribute("dynamic-body", "shape: sphere; mass: 1");
+      //音を最初から再生
+      don.currentTime = 0;
+      don.play();
     };
     if (floorElement) {
       floorElement.addEventListener("collide", floorCollition);
@@ -190,6 +196,12 @@ function GamePage() {
           wasd-controls-enabled="false"
         ></a-camera>
       </a-scene>
+      <audio id="don">
+        <source src="/src/assets/don.mp3" type="audio/mpeg" />
+      </audio>
+      <audio id="dodon">
+        <source src="/src/assets/dodon.mp3" type="audio/mpeg" />
+      </audio>
     </>
   );
 }
